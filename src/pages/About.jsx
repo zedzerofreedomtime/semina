@@ -26,7 +26,7 @@ export default defineConfig({
           วิธีติดตั้ง React + Tailwind CSS (Vite)
         </h1>
         <p className="text-gray-600 mt-2">
-          ทำตามทีละขั้น ใช้งานได้จริง เหมาะกับงาน Workshop
+          ทำตามทีละขั้น ใช้งานได้จริง เหมาะสำหรับ Workshop
         </p>
       </div>
 
@@ -47,32 +47,38 @@ export default defineConfig({
 
         <p>
           เข้าเว็บ:
-          <span className="text-blue-600 ml-2">
+          <a
+            href="https://tailwindcss.com/docs/installation/using-vite"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-600 ml-2 underline break-all"
+          >
             https://tailwindcss.com/docs/installation/using-vite
-          </span>
+          </a>
         </p>
 
         <p>เปิด Terminal แล้วพิมพ์:</p>
         <CodeBlock code={installTailwind} />
 
-        <p>
-          เปิดไฟล์ <code className="bg-orange-100 px-1 rounded">vite.config.js</code>
+        <p className="leading-relaxed">
+          เปิดไฟล์{" "}
+          <code className="bg-orange-100 px-1 rounded">vite.config.js</code>
           <br />
-          เพิ่มโค้ดด้านล่าง โดยวาง
-          <code className="bg-orange-100 px-1 rounded mx-1">
+          เพิ่ม{" "}
+          <code className="bg-orange-100 px-1 rounded">
             import tailwindcss from '@tailwindcss/vite'
-          </code>
-          ไว้ข้างล่าง
-          <code className="bg-orange-100 px-1 rounded mx-1">
+          </code>{" "}
+          ไว้ใต้{" "}
+          <code className="bg-orange-100 px-1 rounded">
             import react from '@vitejs/plugin-react'
           </code>
           <br />
-          และใส่
-          <code className="bg-orange-100 px-1 rounded mx-1">
+          และใส่{" "}
+          <code className="bg-orange-100 px-1 rounded">
             tailwindcss()
-          </code>
-          ไว้หลัง
-          <code className="bg-orange-100 px-1 rounded mx-1">
+          </code>{" "}
+          ต่อท้าย{" "}
+          <code className="bg-orange-100 px-1 rounded">
             react(),
           </code>
         </p>
@@ -88,9 +94,7 @@ export default defineConfig({
         <p>พิมพ์คำสั่ง:</p>
         <CodeBlock code={runDev} />
 
-        <p>
-          เปิดเว็บจากลิงก์ที่แสดงใน Terminal เช่น:
-        </p>
+        <p>เปิดเว็บจากลิงก์ที่แสดงใน Terminal เช่น:</p>
         <p className="text-blue-600 font-medium">
           http://localhost:5173
         </p>

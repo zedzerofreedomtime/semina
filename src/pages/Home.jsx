@@ -120,7 +120,7 @@ export default function Home() {
         <div className="bg-orange-50 border-l-4 border-orange-400 p-4 rounded">
           <p className="italic text-gray-700">
             “สุดท้ายนี้ Tailwind ไม่ได้ทำให้เว็บสวย<br />
-            แต่มันทำให้ผมไม่เสียเวลาต่อยกับกับ CSS ขอบคุณครับ”
+            แต่มันทำให้ผมไม่เสียเวลาต่อยกับ CSS ขอบคุณครับ”
           </p>
         </div>
       </div>
