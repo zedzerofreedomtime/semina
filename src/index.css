@@ -1,1 +1,11 @@
 @import "tailwindcss";
+
+/* Mercedes F1 speed line */
+@keyframes speed {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.animate-speed {
+  animation: speed 2s linear infinite;
+}

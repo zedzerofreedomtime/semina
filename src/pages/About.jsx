@@ -19,23 +19,29 @@ export default defineConfig({
   const runDev = `npm run dev`;
 
   return (
-    <div className="p-8 max-w-4xl mx-auto space-y-6">
-      <h1 className="text-3xl font-bold">
-        วิธีติดตั้ง React + Tailwind CSS (Vite)
-      </h1>
+    <div className="p-8 max-w-4xl mx-auto space-y-8">
+      {/* Header */}
+      <div className="bg-white p-6 rounded-xl shadow-md border-l-4 border-orange-500">
+        <h1 className="text-3xl font-bold text-orange-600">
+          วิธีติดตั้ง React + Tailwind CSS (Vite)
+        </h1>
+        <p className="text-gray-600 mt-2">
+          ทำตามทีละขั้น ใช้งานได้จริง เหมาะกับงาน Workshop
+        </p>
+      </div>
 
-      {/* STEP 1 */}
-      <section className="space-y-2">
-        <h2 className="text-xl font-semibold">
+      {/* Step 1 */}
+      <section className="bg-white p-6 rounded-xl shadow space-y-3">
+        <h2 className="text-xl font-semibold text-orange-500">
           1) สร้างโปรเจกต์ React ด้วย Vite
         </h2>
         <p>เปิด Terminal ใน VS Code แล้วพิมพ์:</p>
         <CodeBlock code={createVite} />
       </section>
 
-      {/* STEP 2 */}
-      <section className="space-y-2">
-        <h2 className="text-xl font-semibold">
+      {/* Step 2 */}
+      <section className="bg-white p-6 rounded-xl shadow space-y-3">
+        <h2 className="text-xl font-semibold text-orange-500">
           2) ติดตั้ง Tailwind CSS
         </h2>
 
@@ -50,26 +56,42 @@ export default defineConfig({
         <CodeBlock code={installTailwind} />
 
         <p>
-          เปิดไฟล์ <code className="bg-gray-200 px-1">vite.config.js</code>  
-          แล้วเพิ่มโค้ดด้านล่าง
+          เปิดไฟล์ <code className="bg-orange-100 px-1 rounded">vite.config.js</code>
+          <br />
+          เพิ่มโค้ดด้านล่าง โดยวาง
+          <code className="bg-orange-100 px-1 rounded mx-1">
+            import tailwindcss from '@tailwindcss/vite'
+          </code>
+          ไว้ข้างล่าง
+          <code className="bg-orange-100 px-1 rounded mx-1">
+            import react from '@vitejs/plugin-react'
+          </code>
+          <br />
+          และใส่
+          <code className="bg-orange-100 px-1 rounded mx-1">
+            tailwindcss()
+          </code>
+          ไว้หลัง
+          <code className="bg-orange-100 px-1 rounded mx-1">
+            react(),
+          </code>
         </p>
 
         <CodeBlock code={viteConfig} />
       </section>
 
-      {/* STEP 3 */}
-      <section className="space-y-2">
-        <h2 className="text-xl font-semibold">
+      {/* Step 3 */}
+      <section className="bg-white p-6 rounded-xl shadow space-y-3">
+        <h2 className="text-xl font-semibold text-orange-500">
           3) รันโปรเจกต์
         </h2>
-
         <p>พิมพ์คำสั่ง:</p>
         <CodeBlock code={runDev} />
 
         <p>
           เปิดเว็บจากลิงก์ที่แสดงใน Terminal เช่น:
         </p>
-        <p className="text-blue-600">
+        <p className="text-blue-600 font-medium">
           http://localhost:5173
         </p>
       </section>

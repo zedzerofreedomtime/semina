@@ -1,15 +1,6 @@
 import CodeBlock from "../components/CodeBlock";
 
 export default function Contact() {
-  const structure = `tailwind-navbar-workshop/
-├─ index.html
-├─ vite.config.js
-├─ package.json
-├─ src/
-│  ├─ main.jsx
-│  ├─ App.jsx
-│  └─ index.css`;
-
   const indexCss = `@import "tailwindcss";`;
 
   const mainJsx = `import React from "react";
@@ -70,59 +61,78 @@ export default function App() {
 }`;
 
   return (
-    <div className="p-8 max-w-4xl mx-auto space-y-10">
-      <h1 className="text-3xl font-bold">
-        Workshop : การทำ Responsive
-      </h1>
+    <div className="p-8 max-w-4xl mx-auto space-y-8">
+      {/* Header */}
+      <div className="bg-white p-6 rounded-xl shadow-md border-l-4 border-orange-500">
+        <h1 className="text-3xl font-bold text-orange-600">
+          Workshop : การทำ Responsive
+        </h1>
+        <p className="text-gray-600 mt-2">
+          ทดลองสร้าง Responsive Navbar ด้วย Tailwind CSS
+        </p>
+      </div>
 
-      {/* 1 */}
-      <section className="space-y-3">
-        <h2 className="text-xl font-semibold">
+      {/* 1 โครงสร้างโปรเจกต์ (ไม่มีปุ่มก็อป) */}
+      <section className="bg-white p-6 rounded-xl shadow space-y-3">
+        <h2 className="text-xl font-semibold text-orange-500">
           1) โครงสร้างโปรเจกต์
         </h2>
-        <CodeBlock code={structure} />
+
+        <div className="bg-gray-900 text-gray-100 p-4 rounded-lg text-sm overflow-x-auto">
+          <pre>{`tailwind-navbar-workshop/
+├─ index.html
+├─ vite.config.js
+├─ package.json
+├─ src/
+│  ├─ main.jsx
+│  ├─ App.jsx
+│  └─ index.css`}</pre>
+        </div>
       </section>
 
-      {/* 2 */}
-      <section className="space-y-3">
-        <h2 className="text-xl font-semibold">
-          2) src/index.css
+      {/* 2 index.css */}
+      <section className="bg-white p-6 rounded-xl shadow space-y-3">
+        <h2 className="text-xl font-semibold text-orange-500">
+          2) index.css
         </h2>
+
         <CodeBlock code={indexCss} />
 
         <ul className="list-disc ml-6 text-gray-700">
           <li>บรรทัดเดียวจบ</li>
           <li>Tailwind v4 ใช้ import แบบนี้แทน @tailwind base;</li>
-          <li>CSS จะถูก generate อัตโนมัติจาก class ที่เราใช้</li>
+          <li>CSS ถูก generate จาก class ที่เราใช้จริง</li>
         </ul>
       </section>
 
-      {/* 3 */}
-      <section className="space-y-3">
-        <h2 className="text-xl font-semibold">
-          3) src/main.jsx
+      {/* 3 main.jsx */}
+      <section className="bg-white p-6 rounded-xl shadow space-y-3">
+        <h2 className="text-xl font-semibold text-orange-500">
+          3) main.jsx
         </h2>
+
         <CodeBlock code={mainJsx} />
 
         <ul className="list-disc ml-6 text-gray-700">
           <li>เป็นจุดเริ่มต้นของ React</li>
-          <li>เอา {"<App />"} ไปแสดงใน div #root</li>
-          <li>import index.css เพื่อให้ Tailwind ใช้ได้ทั้งเว็บ</li>
+          <li>แสดง &lt;App /&gt; ใน div #root</li>
+          <li>import index.css เพื่อเปิดใช้ Tailwind ทั้งเว็บ</li>
         </ul>
       </section>
 
-      {/* 4 */}
-      <section className="space-y-3">
-        <h2 className="text-xl font-semibold">
-          4) src/App.jsx (โค้ดหลัก Workshop)
+      {/* 4 App.jsx */}
+      <section className="bg-white p-6 rounded-xl shadow space-y-3">
+        <h2 className="text-xl font-semibold text-orange-500">
+          4) App.jsx (โค้ดหลัก Workshop)
         </h2>
+
         <CodeBlock code={appJsx} />
 
         <ul className="list-disc ml-6 text-gray-700">
-          <li>Desktop: แสดงเมนูแนวนอน</li>
-          <li>Tablet / Mobile: ซ่อนเมนู ใช้ปุ่ม ☰</li>
-          <li>ใช้ md:hidden และ md:flex คุม Responsive</li>
-          <li>useState ใช้เปิด–ปิดเมนูมือถือ</li>
+          <li>Desktop แสดงเมนูแนวนอน</li>
+          <li>Mobile ใช้ปุ่ม ☰</li>
+          <li>md:flex / md:hidden คุม Responsive</li>
+          <li>useState คุมเปิด–ปิดเมนู</li>
         </ul>
       </section>
     </div>
