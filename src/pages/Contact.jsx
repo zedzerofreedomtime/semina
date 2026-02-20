@@ -1,138 +1,202 @@
 import CodeBlock from "../components/CodeBlock";
 
 export default function Contact() {
-  const indexCss = `@import "tailwindcss";`;
+  const homeJsx = `export default function Home() {
+  return (
+    <div className="p-8 max-w-4xl mx-auto">
+      <div className="bg-white p-6 rounded-xl shadow">
+        <h1 className="text-3xl font-bold text-orange-600">
+          Responsive ด้วย Tailwind CSS
+        </h1>
+        <p className="text-gray-600 mt-2">
+          Workshop สำหรับผู้เริ่มต้น
+        </p>
+      </div>
+    </div>
+  );
+}
+`;
 
-  const mainJsx = `import React from "react";
-import ReactDOM from "react-dom/client";
-import App from "./App";
-import "./index.css";
+  const navbarBasic = `export default function Navbar() {
+  return (
+    <nav className="bg-orange-500 text-white px-6 py-4">
+      <div className="flex justify-between">
+        <div className="font-bold">MyWeb</div>
 
-ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);`;
+        <ul className="flex gap-6">
+          <li>Home</li>
+          <li>About</li>
+          <li>Workshop</li>
+        </ul>
+      </div>
+    </nav>
+  );
+}
+`;
 
-  const appJsx = `import { useState } from "react";
+  const appJsx = `import Navbar from "./Navbar";
+import Home from "./Home";
 
 export default function App() {
-  const [open, setOpen] = useState(false);
-
   return (
     <>
-      <nav className="bg-blue-600 text-white px-6 py-4">
-        <div className="flex items-center justify-between">
-          <div className="text-xl font-bold">MyWeb</div>
-
-          <ul className="hidden md:flex gap-6">
-            <li className="cursor-pointer hover:underline">Home</li>
-            <li className="cursor-pointer hover:underline">About</li>
-            <li className="cursor-pointer hover:underline">Contact</li>
-          </ul>
-
-          <button
-            className="md:hidden text-2xl"
-            onClick={() => setOpen(!open)}
-          >
-            ☰
-          </button>
-        </div>
-
-        {open && (
-          <ul className="md:hidden mt-4 space-y-3">
-            <li className="border-b pb-2">Home</li>
-            <li className="border-b pb-2">About</li>
-            <li className="border-b pb-2">Contact</li>
-          </ul>
-        )}
-      </nav>
-
-      <main className="p-6">
-        <h1 className="text-2xl font-bold mb-2">
-          Responsive Navbar Workshop
-        </h1>
-        <p className="text-gray-600">
-          ลองย่อ–ขยายหน้าจอ เพื่อดูผลลัพธ์บน Desktop, iPad และ Mobile
-        </p>
-      </main>
+      <Navbar />
+      <Home />
     </>
   );
-}`;
+}
+`;
+
+  const hideMenu = `<ul className="hidden md:flex gap-6">`;
+
+  const hideMe = `<ul className="flex gap-6">`;
+
+  const menuButton = `<button className="md:hidden text-2xl">
+  ☰
+</button>`;
+
+  const useStateCode = `import { useState } from "react";
+
+export default function Navbar() {
+  const [open, setOpen] = useState(false);
+`;
+
+  const mobileMenu = `{open && (
+  <ul className="md:hidden mt-4 space-y-3">
+    <li>Home</li>
+    <li>About</li>
+    <li>Workshop</li>
+  </ul>
+)}
+`;
+
+  const toggleButton = `<button
+  className="md:hidden text-2xl"
+  onClick={() => setOpen(!open)}
+>
+  ☰
+</button>`;
 
   return (
     <div className="p-8 max-w-4xl mx-auto space-y-8">
-      {/* Header */}
       <div className="bg-white p-6 rounded-xl shadow-md border-l-4 border-orange-500">
         <h1 className="text-3xl font-bold text-orange-600">
-          Workshop : การทำ Responsive
+          Workshop : Responsive Navbar ด้วย Tailwind CSS
         </h1>
-        <p className="text-gray-600 mt-2">
-          ทดลองสร้าง Responsive Navbar ด้วย Tailwind CSS
-        </p>
       </div>
 
-      {/* 1 โครงสร้างโปรเจกต์ (ไม่มีปุ่มก็อป) */}
       <section className="bg-white p-6 rounded-xl shadow space-y-3">
         <h2 className="text-xl font-semibold text-orange-500">
-          1) โครงสร้างโปรเจกต์
+          1) โค้ดหน้าแรก → ใส่ที่ไฟล์ไหน?
         </h2>
+        <p>ไฟล์: src/Home.jsx</p>
 
-        <div className="bg-gray-900 text-gray-100 p-4 rounded-lg text-sm overflow-x-auto">
-          <pre>{`tailwind-navbar-workshop/
-├─ index.html
-├─ vite.config.js
-├─ package.json
-├─ src/
-│  ├─ main.jsx
-│  ├─ App.jsx
-│  └─ index.css`}</pre>
-        </div>
-      </section>
-
-      {/* 2 index.css */}
-      <section className="bg-white p-6 rounded-xl shadow space-y-3">
-        <h2 className="text-xl font-semibold text-orange-500">
-          2) index.css
-        </h2>
-
-        <CodeBlock code={indexCss} />
+        <CodeBlock code={homeJsx} />
 
         <ul className="list-disc ml-6 text-gray-700">
-          <li>บรรทัดเดียวจบ</li>
-          <li>Tailwind v4 ใช้ import แบบนี้แทน @tailwind base;</li>
-          <li>CSS ถูก generate จาก class ที่เราใช้จริง</li>
+          <li>max-w-4xl mx-auto ใช้คุมความกว้างจอใหญ่</li>
+          <li>p-8 ใช้เว้นขอบทุกอุปกรณ์</li>
+          <li>ตอนนี้ยังไม่ Responsive แต่เป็นฐานที่ดีสำหรับทุกจอ</li>
         </ul>
       </section>
 
-      {/* 3 main.jsx */}
       <section className="bg-white p-6 rounded-xl shadow space-y-3">
         <h2 className="text-xl font-semibold text-orange-500">
-          3) main.jsx
+          2) Navbar พื้นฐาน → ใส่ที่ไฟล์ไหน?
         </h2>
+        <p>ไฟล์: src/Navbar.jsx</p>
 
-        <CodeBlock code={mainJsx} />
+        <CodeBlock code={navbarBasic} />
 
         <ul className="list-disc ml-6 text-gray-700">
-          <li>เป็นจุดเริ่มต้นของ React</li>
-          <li>แสดง &lt;App /&gt; ใน div #root</li>
-          <li>import index.css เพื่อเปิดใช้ Tailwind ทั้งเว็บ</li>
+          <li>flex justify-between ทำให้โลโก้ชิดซ้าย เมนูชิดขวา</li>
+          <li>ตอนนี้ทุกขนาดจอเห็นเหมือนกัน</li>
+          <li>ยังไม่ Responsive เพราะตั้งใจทำให้เห็นโครงก่อน</li>
         </ul>
-      </section>
 
-      {/* 4 App.jsx */}
-      <section className="bg-white p-6 rounded-xl shadow space-y-3">
-        <h2 className="text-xl font-semibold text-orange-500">
-          4) App.jsx (โค้ดหลัก Workshop)
-        </h2>
-
+        <p className="mt-4">นำไปแสดงในไฟล์: src/App.jsx</p>
         <CodeBlock code={appJsx} />
+      </section>
+
+      <section className="bg-white p-6 rounded-xl shadow space-y-3">
+        <h2 className="text-xl font-semibold text-orange-500">
+          3) ซ่อนเมนูบนมือถือ
+        </h2>
+        <p>ใส่ใน: Navbar.jsx</p>
+        <p>code เดิม</p>
+
+        <CodeBlock code={hideMe} />
+
+         <p>แก้เป็น</p>
+
+        <CodeBlock code={hideMenu} />
 
         <ul className="list-disc ml-6 text-gray-700">
-          <li>Desktop แสดงเมนูแนวนอน</li>
-          <li>Mobile ใช้ปุ่ม ☰</li>
-          <li>md:flex / md:hidden คุม Responsive</li>
-          <li>useState คุมเปิด–ปิดเมนู</li>
+          <li>hidden ทำให้มือถือไม่เห็นเมนู</li>
+          <li>md:flex ทำให้ Tablet และ Desktop แสดง</li>
+          <li>Responsive เกิดจาก class แค่บรรทัดเดียว</li>
+        </ul>
+      </section>
+
+      
+
+      <section className="bg-white p-6 rounded-xl shadow space-y-3">
+        <h2 className="text-xl font-semibold text-orange-500">
+          4) ปุ่มเมนูสำหรับมือถือ
+        </h2>
+        <p>ใส่ใน: Navbar.jsx</p>
+        <p>ใต้ &lt;ul&gt; ยังอยู่ใน &lt;div className="flex justify-between"&gt;</p>
+
+        <CodeBlock code={menuButton} />
+
+        <ul className="list-disc ml-6 text-gray-700">
+          <li>md:hidden ทำให้จอใหญ่ไม่เห็น</li>
+          <li>แสดงเฉพาะบนมือถือ</li>
+          <li>ใช้แทนเมนูแบบเต็ม</li>
+        </ul>
+      </section>
+
+      <section className="bg-white p-6 rounded-xl shadow space-y-3">
+        <h2 className="text-xl font-semibold text-orange-500">
+          5) useState ต้องใส่ตรงไหน?
+        </h2>
+        <p>ใส่ใน: Navbar.jsx</p>
+
+        <CodeBlock code={useStateCode} />
+
+        <ul className="list-disc ml-6 text-gray-700">
+          <li>open เป็น false หมายถึงเมนูปิด</li>
+          <li>open เป็น true หมายถึงเมนูเปิด</li>
+          <li>ใช้ควบคุมเมนูบนมือถือ</li>
+        </ul>
+      </section>
+
+      <section className="bg-white p-6 rounded-xl shadow space-y-3">
+        <h2 className="text-xl font-semibold text-orange-500">
+          6) Mobile Menu
+        </h2>
+        <p>ใส่ ใต้ div flex แต่ยังอยู่ใน ยังอยู่ใน &lt;nav&gt;</p>
+
+
+        <CodeBlock code={mobileMenu} />
+
+        <ul className="list-disc ml-6 text-gray-700">
+          <li>แสดงเฉพาะตอนเมนูเปิด</li>
+          <li>เรียงเมนูแนวตั้ง</li>
+          <li>ไม่ใช้บนจอใหญ่</li>
+        </ul>
+      </section>
+
+      <section className="bg-white p-6 rounded-xl shadow space-y-3">
+        <h2 className="text-xl font-semibold text-orange-500">
+          7) เชื่อมปุ่มกับ state
+        </h2>
+
+        <CodeBlock code={toggleButton} />
+
+        <ul className="list-disc ml-6 text-gray-700">
+          <li>คลิกเพื่อเปิดและปิดเมนู</li>
+          <li>ไม่ต้องเขียน JavaScript ซับซ้อน</li>
         </ul>
       </section>
     </div>
